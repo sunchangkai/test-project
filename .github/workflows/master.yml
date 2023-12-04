@@ -35,7 +35,7 @@ jobs:
           echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
           echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       
-      - name: "build"
+      - name: "Build"
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -55,7 +55,7 @@ jobs:
           echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
           echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       
-      - name: "deploy"
+      - name: "Deploy"
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
