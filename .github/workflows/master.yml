@@ -1,21 +1,21 @@
 name: prosafeai github actions
 run-name: ${{ github.actor }} is testing out GitHub Actions
-on: [push]
+on: [push] # 还需要确认触发条件
 
 jobs:
   copy-prosafeAI:
     runs-on: ubuntu-latest
     steps:
-      - name: Basic Infomations
+      - name: "Basic infomations"
         run: |
           echo "The job was automatically triggered by a ${{ github.event_name }} event."
           echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
           echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       
-      - name: Check out repository code
+      - name: "Check out repository code"
         uses: actions/checkout@v4
 
-      - name: Copy files to server
+      - name: "Copy files to server"
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -23,13 +23,13 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: './'
-          target: /home/sunck/prosafeai/
+          target: /home/sunck/
         
   build-prosafeAI:
     needs: copy-prosafeAI
     runs-on: ubuntu-latest
     steps:
-      - name: Basic infomations
+      - name: "Basic infomations"
         run: |
           echo "The job was automatically triggered by a ${{ github.event_name }} event."
           echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -49,7 +49,7 @@ jobs:
     needs: [copy-prosafeAI, build-prosafeAI]
     runs-on: ubuntu-latest
     steps:
-      - name: Basic infomations
+      - name: "Basic infomations"
         run: |
           echo "The job was automatically triggered by a ${{ github.event_name }} event."
           echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
