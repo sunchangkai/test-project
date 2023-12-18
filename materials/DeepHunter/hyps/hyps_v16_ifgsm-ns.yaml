@@ -1,0 +1,38 @@
+meta_params:
+
+    'IFGSM':
+        'eps': [0.007, 0.001]
+        'dtype': 'float'
+        'model': './models/v16/tsr_classifier_model.h5'
+        'iteration_num': 3
+        'class_num': 7
+
+    'perspective':
+      'pos_1_x': [ 0, 10 ]
+      'pos_1_y': [ 0, 10 ]
+      'pos_2_x': [ 0, 10 ]
+      'pos_2_y': [ 0, 10 ]
+      'pos_3_x': [ 0, 10 ]
+      'pos_3_y': [ 0, 10 ]
+      'pos_4_x': [ 0, 10 ]
+      'pos_4_y': [ 0, 10 ]
+      'dtype': 'int'
+
+criteria_params:
+    'NC':
+        'threshold': 0.75
+        'act_fn': ['Activation', 'Conv2D', 'Dense']
+
+    'KMNC':
+        'k_section': 6
+        'train_data_path': './data/fewer/1'
+        'act_fn': ['Activation', 'Conv2D', 'Dense']
+
+    'TopK':
+        'k': 5
+        'act_fn': ['Activation', 'Conv2D', 'Dense']
+
+    'NeuronSensitivity':
+        'threshold': 0.5
+        'e': 0.2
+        'act_fn': ['Activation', 'Conv2D', 'Dense']

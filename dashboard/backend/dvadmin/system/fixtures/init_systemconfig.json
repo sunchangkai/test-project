@@ -1,0 +1,197 @@
+[
+    {
+        "parent": null,
+        "title": "base config",
+        "key": "base",
+        "value": null,
+        "sort": 0,
+        "status": true,
+        "data_options": null,
+        "form_item_type": 0,
+        "rule": null,
+        "placeholder": null,
+        "setting": null,
+        "children": [
+            {
+                "parent": 10,
+                "title": "start captcha",
+                "key": "captcha_state",
+                "value": true,
+                "sort": 1,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 9,
+                "rule": [
+                    {
+                        "message": "required",
+                        "required": true
+                    }
+                ],
+                "placeholder": "please choose",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 10,
+                "title": "create default password",
+                "key": "default_password",
+                "value": "admin123456",
+                "sort": 2,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": [
+                    {
+                        "message": "required",
+                        "required": true
+                    }
+                ],
+                "placeholder": "please input a default password",
+                "setting": null,
+                "children": []
+            }
+        ]
+    },
+    {
+        "parent": null,
+        "title": "login config",
+        "key": "login",
+        "value": null,
+        "sort": 1,
+        "status": true,
+        "data_options": null,
+        "form_item_type": 0,
+        "rule": null,
+        "placeholder": null,
+        "setting": null,
+        "children": [
+            {
+                "parent": 1,
+                "title": "site name",
+                "key": "site_name",
+                "value": "ProSafeAI",
+                "sort": 1,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": [
+                    {
+                        "message": "required",
+                        "required": true
+                    }
+                ],
+                "placeholder": "please input site name",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "site logo",
+                "key": "site_logo",
+                "value": null,
+                "sort": 2,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 7,
+                "rule": [],
+                "placeholder": "please upload logo",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "login background",
+                "key": "login_background",
+                "value": null,
+                "sort": 3,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 7,
+                "rule": [],
+                "placeholder": "please upload background",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "copyright",
+                "key": "copyright",
+                "value": "2021-2022 django-vue-admin.com",
+                "sort": 4,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": [
+                    {
+                        "message": "required",
+                        "required": true
+                    }
+                ],
+                "placeholder": "please input copyright",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "keep record",
+                "key": "keep_record",
+                "value": "晋ICP备18005113号-3",
+                "sort": 5,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": [
+                    {
+                        "message": "required",
+                        "required": true
+                    }
+                ],
+                "placeholder": "please input keep record",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "help url",
+                "key": "help_url",
+                "value": "https://django-vue-admin.com",
+                "sort": 6,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": "",
+                "placeholder": "please input help url",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "privacy url",
+                "key": "privacy_url",
+                "value": "#",
+                "sort": 7,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": [],
+                "placeholder": "please input privacy url",
+                "setting": null,
+                "children": []
+            },
+            {
+                "parent": 1,
+                "title": "clause url",
+                "key": "clause_url",
+                "value": "#",
+                "sort": 8,
+                "status": true,
+                "data_options": null,
+                "form_item_type": 0,
+                "rule": [],
+                "placeholder": "please input clause url",
+                "setting": null,
+                "children": []
+            }
+        ]
+    }
+]

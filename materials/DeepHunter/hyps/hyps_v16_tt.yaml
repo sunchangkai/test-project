@@ -1,0 +1,36 @@
+
+meta_params:
+#    'brightness':
+#        'beta': [ 1, 30 ]
+#        'dtype': 'int'
+
+    'rotate_zero':
+        'theta': [ 80, 95 ]
+        'dtype': 'int'
+
+    'FGSM':
+        'eps': [0.01, 0.005]
+        'dtype': 'float'
+        'model': './models/v16/tsr_classifier_model.h5'
+        'class_num': 7
+
+criteria_params:
+    'NC':
+        'threshold': 0.75
+        'act_fn': ['Activation', 'Conv2D', 'Dense']
+
+    'KMNC':
+        'k_section': 6
+        'train_data_path': './data/fewer/1'
+        'act_fn': ['Activation', 'Conv2D', 'Dense']
+
+    'TopK':
+        'k': 5
+        'act_fn': ['Activation', 'Conv2D', 'Dense']
+
+
+
+
+
+
+

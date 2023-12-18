@@ -1,0 +1,10 @@
+img_train_0.png	{"class": "0", "Snowfall_intensity": "no snow", "Fog_intensity": "fog severity 1", "Rain_quantity": "light rain", "dataset": "mfk0", "augmentation": "0", "Illuminance": "cloudy"}
+img_train_1.png	{"class": "0", "augmentation": "0", "Snowfall_intensity": "no snow", "Fog_intensity": "fog severity 1", "Illuminance": "cloudy", "Rain_quantity": "no rain", "dataset": "mfk0"}
+img_train_2.png	{"Rain_quantity": "no rain", "Snowfall_intensity": "light snow", "class": "0", "augmentation": "0", "Illuminance": "cloudy", "Fog_intensity": "fog severity 1", "dataset": "mfk0"}
+img_train_3.png	{"Illuminance": "cloudy", "Rain_quantity": "no rain", "Snowfall_intensity": "no snow", "Fog_intensity": "fog severity 1", "dataset": "mfk0", "augmentation": "0", "class": "0"}
+img_train_4.png	{"Snowfall_intensity": "no snow", "class": "0", "Rain_quantity": "light rain", "Illuminance": "cloudy", "dataset": "mfk0", "Fog_intensity": "fog severity 1", "augmentation": "0"}
+img_train_5.png	{"class": "0", "Rain_quantity": "light rain", "Snowfall_intensity": "no snow", "Fog_intensity": "fog severity 1", "dataset": "mfk0", "augmentation": "0", "Illuminance": "cloudy"}
+img_train_6.png	{"Illuminance": "cloudy", "dataset": "mfk0", "Fog_intensity": "fog severity 1", "class": "0", "Rain_quantity": "no rain", "Snowfall_intensity": "light snow", "augmentation": "0"}
+img_train_7.png	{"class": "0", "Fog_intensity": "fog severity 1", "dataset": "mfk0", "Rain_quantity": "no rain", "augmentation": "0", "Illuminance": "cloudy", "Snowfall_intensity": "no snow"}
+img_train_8.png	{"Snowfall_intensity": "no snow", "dataset": "mfk0", "Fog_intensity": "fog severity 1", "class": "0", "Rain_quantity": "no rain", "augmentation": "0", "Illuminance": "sunny"}
+img_train_9.png	{"Illuminance": "cloudy", "Fog_intensity": "fog severity 1", "dataset": "mfk0", "Rain_quantity": "no rain", "Snowfall_intensity": "light snow", "augmentation": "0", "class": "0"}

@@ -1,0 +1,554 @@
+{
+  "requirements_catalog": {
+    "name": "Data-TSRClassifier",
+    "id": "552060081315418545",
+    "requirements": [
+      {
+        "name": "data-tsr-1",
+        "id": "552060081315418547",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "class label",
+          "verification_content": "taxonomy",
+          "computation_rule": {
+            "property": "distinguishable by visual characteristics"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-2",
+        "id": "552060081315418586",
+        "type": "info",
+        "export": "textual",
+        "description": {
+          "text": "There shall be a one-to-one mapping between the class labels and the type of the traffic signs described by corresponding ODD parameters that are specified later."
+        }
+      },
+      {
+        "name": "data-tsr-3",
+        "id": "552060081315418638",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "bounding box",
+          "verification_content": "object count",
+          "computation_rule": {
+            "operator": "=",
+            "threshold": 1,
+            "detection_object": "traffic sign"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-4",
+        "id": "552060081315418725",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "bounding box",
+          "verification_content": "visibility",
+          "computation_rule": {
+            "metric": "total visibility",
+            "operator": ">=",
+            "threshold": 50,
+            "detection_object": "construction area sign"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-5",
+        "id": "552060081315418826",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "bounding box",
+          "verification_content": "visibility",
+          "computation_rule": {
+            "metric": "total visibility",
+            "operator": ">=",
+            "threshold": 70,
+            "detection_object": "speed limit sign"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-6",
+        "id": "552060081315418970",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "perspective",
+          "computation_rule": {
+            "position": "front camera"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-7",
+        "id": "552060081315419054",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "quality",
+          "computation_rule": {
+            "metric": "distortion",
+            "operator": ">",
+            "threshold": 10,
+            "action": "visual inspection"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-8",
+        "id": "552060081315419192",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "quality",
+          "computation_rule": {
+            "metric": "brightness",
+            "operator": ">",
+            "threshold": 10,
+            "action": "visual inspection"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-9",
+        "id": "552060081315419361",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "quality",
+          "computation_rule": {
+            "metric": "blurriness",
+            "operator": ">",
+            "threshold": 10,
+            "action": "visual inspection"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-10",
+        "id": "552060081315419527",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "quality",
+          "computation_rule": {
+            "metric": "contrast",
+            "operator": ">",
+            "threshold": 10,
+            "action": "visual inspection"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-11",
+        "id": "552060081315419708",
+        "type": "data",
+        "classification": "consistency",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "quality",
+          "computation_rule": {
+            "metric": "saturation",
+            "operator": "<",
+            "threshold": 10,
+            "action": "visual inspection"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-12a",
+        "id": "552060081315419904",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "annotation",
+          "computation_rule": {
+            "information": "class label"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-12b",
+        "id": "552060081315420098",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "annotation",
+          "computation_rule": {
+            "information": "bounding box"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-13",
+        "id": "552060081315420275",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "meta data",
+          "verification_content": "schema",
+          "computation_rule": {
+            "information": "general description"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-14",
+        "id": "552060081315420482",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "meta data",
+          "verification_content": "schema",
+          "computation_rule": {
+            "information": "detection method"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-15",
+        "id": "552060081315420696",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "image",
+          "verification_content": "annotation",
+          "computation_rule": {
+            "information": "meta data"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-16",
+        "id": "552060081315420941",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "meta data",
+          "verification_content": "odd information",
+          "computation_rule": {
+            "odd_parameter": "Rain quantity",
+            "info_type": "categorical",
+            "metric": "set cardinality",
+            "operator": ">=",
+            "threshold": 2
+          }
+        }
+      },
+      {
+        "name": "data-tsr-17a",
+        "id": "552060081315439123",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "meta data",
+          "verification_content": "odd information",
+          "computation_rule": {
+            "odd_parameter": "Road type"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-17b",
+        "id": "552060081316200891",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "meta data",
+          "verification_content": "odd information",
+          "computation_rule": {
+            "odd_parameter": "Regions or states"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-18",
+        "id": "552060081315433685",
+        "type": "info",
+        "export": "textual",
+        "description": {
+          "text": "If the granularity of an ODD paramter is not covered by the meta data information or if the meta data is classified by other strategy/method, a mapping schema shall be created."
+        }
+      },
+      {
+        "name": "data-tsr-19",
+        "id": "552060081315433929",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "meta data",
+          "verification_content": "mapping",
+          "computation_rule": {
+            "from": "odd",
+            "to": "meta_data",
+            "odd_parameter": "Rain quantity",
+            "mapping_property": "surjective"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-20",
+        "id": "552060081315434195",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "bounding box",
+          "verification_content": "deviation",
+          "computation_rule": {
+            "metric": "maximal deviation",
+            "operator": "<",
+            "threshold": 5,
+            "detection_object": "traffic sign"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-21a",
+        "id": "552060081315434502",
+        "type": "info",
+        "export": "textual",
+        "description": {
+          "text": "Tests on the distribution of ODD parameters shall be performed by considering and applying the mapping schema."
+        }
+      },
+      {
+        "name": "data-tsr-21",
+        "id": "552060081315434768",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "distribution",
+          "computation_rule": {
+            "odd_parameter": "Rain quantity",
+            "statistical_distribution": [
+              {
+                "odd_class": "no rain",
+                "probability": 0.64
+              },
+              {
+                "odd_class": "light rain",
+                "probability": 0.22
+              },
+              {
+                "odd_class": "moderate rain",
+                "probability": 0.08
+              },
+              {
+                "odd_class": "heavy rain",
+                "probability": 0.04
+              },
+              {
+                "odd_class": "violent rain",
+                "probability": 0.019
+              },
+              {
+                "odd_class": "cloud burst",
+                "probability": 0.001
+              }
+            ],
+            "statistical_test": "Chi Square Test",
+            "significance": 0.05
+          }
+        }
+      },
+      {
+        "name": "data-tsr-22",
+        "id": "552060081315435128",
+        "type": "info",
+        "export": "textual",
+        "description": {
+          "text": "Coverage of ODD parameters shall be performed by considering and applying the mapping schema."
+        }
+      },
+      {
+        "name": "data-tsr-23",
+        "id": "552060081315435432",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "parameter coverage",
+          "computation_rule": {
+            "odd_parameter": "Rain quantity"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-24",
+        "id": "552060081315435821",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "parameter coverage",
+          "computation_rule": {
+            "odd_parameter": "Regions or states"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-25",
+        "id": "552060081315436150",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "parameter coverage",
+          "computation_rule": {
+            "odd_parameter": "Road type"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-26a",
+        "id": "7528772871778298172",
+        "type": "data",
+        "classification": "accuracy",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "class label",
+          "verification_content": "specification",
+          "computation_rule": {
+            "detection_object": "traffic sign",
+            "odd_parameters": [
+              {
+                "name": "Construction area signs"
+              },
+              {
+                "name": "Speed limit signs"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "data-tsr-26b",
+        "id": "552060081315436513",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "label balance",
+          "computation_rule": {
+            "property": "balanced data"
+          }
+        }
+      },
+      {
+        "name": "data-tsr-27",
+        "id": "552060081315436890",
+        "type": "info",
+        "export": "textual",
+        "description": {
+          "text": "Scenario coverage shall be performed by considering and applying the mapping schema."
+        }
+      },
+      {
+        "name": "data-tsr-28",
+        "id": "552060081315437264",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "scenario coverage",
+          "computation_rule": {
+            "metric": "count",
+            "operator": ">=",
+            "threshold": 100,
+            "scenario": [
+              {
+                "odd_parameter": "Rain quantity",
+                "odd_class": "light rain"
+              },
+              {
+                "odd_parameter": "Illuminance",
+                "odd_class": "overcast night"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "data-tsr-30",
+        "id": "552060081315438086",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "scenario coverage",
+          "computation_rule": {
+            "metric": "count",
+            "operator": ">=",
+            "threshold": 10,
+            "scenario": [
+              {
+                "odd_parameter": "Rain quantity",
+                "odd_class": "cloud burst"
+              },
+              {
+                "odd_parameter": "Illuminance",
+                "odd_class": "overcast night"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "data-tsr-31",
+        "id": "552060081315438672",
+        "type": "data",
+        "classification": "representativeness",
+        "export": "machine_readable",
+        "description": {
+          "verification_object": "dataset",
+          "verification_content": "amount",
+          "computation_rule": {
+            "metric": "total amount",
+            "operator": ">=",
+            "threshold": 5000
+          }
+        }
+      }
+    ]
+  }
+}
