@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: './'
-          target: /home/sunck/
+          target: /home/sunck/prosafeai-prosafeai-main
         
   build-prosafeAI:
     needs: copy-prosafeAI
