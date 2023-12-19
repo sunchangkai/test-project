@@ -51,8 +51,9 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/sunck/prosafeai-prosafeai-main/dashboard
+            # pwd
+            # docker-compose build
             pwd
-            docker-compose build
 
   deploy-prosafeAI:
     needs: [copy-prosafeAI, build-prosafeAI]
@@ -73,5 +74,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /home/sunck/prosafeai-prosafeai-main/dashboard
+            # pwd
+            # docker-compose up -d
             pwd
-            docker-compose up -d
