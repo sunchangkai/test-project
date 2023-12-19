@@ -30,7 +30,7 @@ const cdn = {
 // 多页配置，默认未开启，如需要请参考 https://cli.vuejs.org/zh/config/#pages
 const pages = undefined;
 // const pages = {
-//   index: './src/main.js',
+//   index: './src/main.js11111',
 //   subpage: './src/subpage.js'
 // }
 
