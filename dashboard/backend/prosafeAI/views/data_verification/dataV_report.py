@@ -349,8 +349,6 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
             elements.append(Paragraph(ptext, style=style_dict["no_order_list"]))
         elements.append(Spacer(1, 8 * mm))
 
-
-
         # Test Result
         ptext = "<b>Test Result</b>"
         elements.append(Paragraph(ptext, style=style_dict["heading1"]))
@@ -368,16 +366,14 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
         elements.append(Spacer(1, 8 * mm))
         elements.append(PageBreak())
 
-
-
         # Appendix
         ptext = "<b>Appendix</b>"
         elements.append(Paragraph(ptext, style=style_dict["heading1"]))
         elements.append(img)
 
-
         ptext = "<b><i>Dataset Summary</i></b>"
         elements.append(Paragraph(ptext, style=style_dict["heading2"]))
+        elements.append(Spacer(1, 3 * mm))
 
         # 1.1
         ptext = "<b># Samples & Labels distribution</b>"
@@ -385,23 +381,29 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
 
         dataset_info, label_data = get_dataset_info(task_id)
         samples_number = dataset_info["count"]
-        dataset_class = label_data["categories"]
-        dataset_class_no = len(dataset_class)
-
-        ptext = f"""There are <a color='#c00000'><b>{samples_number}</b></a> samples in full datasets, including <a color='#c00000'><b>{dataset_class_no}</b></a> categories ({dataset_class}). """
-        elements.append(Paragraph(ptext, style=style_dict["normal"]))
-        ptext = "The related test results are as follows:"
-        elements.append(Paragraph(ptext, style=style_dict["normal"]))
+        version_number = dataset_info["version"]
+        dataset_description = dataset_info["table_description"]
 
         if label_data:
+            dataset_class = label_data["categories"]
+            dataset_class_no = len(dataset_class)
+
+            ptext = f"""There are <a color='#c00000'><b>{samples_number}</b></a> samples in datasets <a color='#c00000'><b>{dataset_description}</b></a> with version <a color='#c00000'><b>{version_number}</b></a> in all, including <a color='#c00000'><b>{dataset_class_no}</b></a> categories ({dataset_class}). """
+            elements.append(Paragraph(ptext, style=style_dict["normal"]))
+            ptext = "The related test results are as follows:"
+            elements.append(Paragraph(ptext, style=style_dict["normal"]))
+
             ptext = "<a color='#c00000'><b>Fig1. The distribution & proportion of labels</b></a>"
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
             imgdata = verificatrion_pie_distribution(data=label_data, figsize=(5, 3.8), colors=pie_colors)
             pi_item = PdfImage(imgdata)
             elements.append(Table([[pi_item]]))
         else:
+            ptext = f"""There are <a color='#c00000'><b>{samples_number}</b></a> samples in datasets <a color='#c00000'><b>{dataset_description}</b></a> with version <a color='#c00000'><b>{version_number}</b></a> in all. """
+            elements.append(Paragraph(ptext, style=style_dict["normal"]))
             ptext = f"""Only one field is allowed to be a label, so the distribution of label categories on the dataset cannot be displayed."""
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
+        elements.append(Spacer(1, 3 * mm))
 
         # 1.2
         ptext = "<b># Feature name list</b>"
@@ -411,26 +413,25 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
             version=dataset_info["version"],
             table_id=dataset_info["table_id"],
         )
-
         if feature_name_list:
             features_for_heatmap = list(feature_data.keys())
+
             ptext = f"""From the metadata of the dataset, there are <a color='#c00000'><b>{len(features_for_heatmap)}</b></a> features whose number of distinct values within the range of[2,10]."""
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
             ptext = "The related test results are as follows:"
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
+
             ptext = "<a color='#c00000'><b>Fig1. Feature name list</b></a>"
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
-
             pdf_data = verification_table(feature_name_list)
             colwidths = [30, 80, 300, 70]
             tableThatSplitsOverPages = Table(pdf_data, colwidths, hAlign="LEFT", repeatRows=1)
             tableThatSplitsOverPages.setStyle(style_dict["verification_tblstyle"])
-
             elements.append(tableThatSplitsOverPages)
         else:
             ptext = f"""From the metadata of the dataset, we can't find the features whose number of distinct value within range [2,10])"""
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
-
+        elements.append(Spacer(1, 3 * mm))
 
         # 1.3
         ptext = "<b># Feature distribution display</b>"
@@ -451,19 +452,17 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
                     "categories": list(values.keys()),
                     "values": list(values.values())
                 }
-
                 imgdata = verificatrion_pie_distribution(data=data, figsize=(5, 3.8), colors=pie_colors)
                 pi_item = PdfImage(imgdata)
                 elements.append(Table([[pi_item]]))
         else:
             ptext = "As there is no feature whose number of distinct values within the range [2,10]), the distribution chart cannot be displayed."
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
-
+        elements.append(Spacer(1, 3 * mm))
 
         # 1.4
         ptext = "<b># Double ODD cross coverage heatmap display</b>"
         elements.append(Paragraph(ptext, style=style_dict["normal"]))
-
         if (not feature_data) or (len(list(feature_data.keys())) < 2):
             ptext = "As the number of available feature is less than two, the heatmap of odd cross coverage cannot be displayed."
             elements.append(Paragraph(ptext, style=style_dict["normal"]))
@@ -482,7 +481,6 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
             items = list(feature_data.keys())
             com_list = list(combinations(items, 2))
 
-
             for index in range(0, len(com_list)):
                 com = com_list[index]
                 data = prepare_heatmap_data(table_name, version, feature_data, com)
@@ -491,6 +489,7 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
                 elements.append(Paragraph(ptext, style=style_dict["normal"]))
                 pi_item = heatmap_for_features(data)
                 elements.append(Table([[pi_item]], [200], hAlign="CENTER"))
+        elements.append(Spacer(1, 8 * mm))
 
         # 2
         ptext = "<b><i>Data coverage details within scenarios from data requirements</i></b>"
@@ -503,11 +502,8 @@ def data_verification_report(filename, task_id, data_userinfo, data_result):
         # 2.2
         ptext = "<b># ODD data coverage display</b>"
         elements.append(Paragraph(ptext, style=style_dict["normal"]))
-
     else:
-        elements.append(Paragraph("Can not find any information for this data verification task.", style_dict["normal"],))
-
-    # return elements
+        elements.append(Paragraph("Can not find any information for this data verification task.", style=style_dict["normal"],))
 
     doc = SimpleDocTemplate(filename,)
     doc.build(elements, canvasmaker=PageNumCanvas)
