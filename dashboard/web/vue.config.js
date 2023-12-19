@@ -43,8 +43,8 @@ module.exports = {
     disableHostCheck: process.env.NODE_ENV === 'development', // 关闭 host check，方便使用 ngrok 之类的内网转发工具
     proxy: {
       '/api': {
-        target: 'http://10.38.49.30:8000/',
-        // target: 'http://127.0.0.1:8000/',
+        //target: 'http://10.38.49.30:8000/',
+        target: 'http://127.0.0.1:8000/',
         changeOrigin: true,
       },
     },
