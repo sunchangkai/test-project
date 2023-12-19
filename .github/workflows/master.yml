@@ -2,7 +2,8 @@ name: prosafeai github actions
 run-name: ${{ github.actor }} is testing out GitHub Actions
 # on: [push] # 还需要确认触发条件
 on: 
-  pull_request:
+  pull_request_review:
+    types: [submitted]
     branches:
       - dev
     paths:
