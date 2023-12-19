@@ -4,7 +4,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions
 on: 
   pull_request:
     branches:
-    - master
+    - dev
 
 jobs:
   copy-prosafeAI:
