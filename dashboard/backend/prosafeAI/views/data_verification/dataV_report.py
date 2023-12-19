@@ -330,7 +330,7 @@ class PdfImage2(Flowable):
 # create reports
 # create report for data verification
 def data_verification_report(filename, task_id, data_userinfo, data_result):
-    elements = [Paragraph("<b>Data Verification Report Good Man</b>", style_dict["title"])]
+    elements = [Paragraph("<b>Data Verification Report Good Man Nice Man</b>", style_dict["title"])]
     elements.append(Spacer(1, 3 * mm))
 
     if data_userinfo:
