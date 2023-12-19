@@ -1,7 +1,0 @@
-0 Background
-1 Construction Sign
-2 Speed Limit 60
-3 Speed Limit 70
-4 Speed Limit 80
-5 Speed Limit 100
-6 Speed Limit 120
