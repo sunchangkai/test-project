@@ -14,7 +14,7 @@ from scipy.special import softmax
 
 np.set_printoptions(precision=10, suppress=True)
 
-agewegweg=1
+agewegweg=2
 
 class DeepHuner(object):
     def __init__(
