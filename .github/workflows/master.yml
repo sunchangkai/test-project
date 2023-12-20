@@ -74,7 +74,7 @@ jobs:
           script: |
             cd /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/dashboard
             # docker-compose build
-            pwd
+            ls
 
       - name: "Deploy"
         uses: appleboy/ssh-action@master
@@ -86,4 +86,4 @@ jobs:
           script: |
             cd /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/dashboard
             # docker-compose up -d
-            pwd
+            ls -l
