@@ -9,6 +9,7 @@ a = 111222233333
 11111111111111111111
 33333333333
 444444
+55555555
 // 拼接路径
 const resolve = dir => require('path').join(__dirname, dir);
 
