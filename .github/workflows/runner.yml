@@ -1,10 +1,7 @@
 name: prosafeai actions
 run-name: ${{ github.actor }} merge to dev
 # 还需要确认触发条件
-on: 
-  push:
-    branches:
-      - dev
+on:
   pull_request:
     types: [closed]
     branches:
