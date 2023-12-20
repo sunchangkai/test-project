@@ -4,7 +4,7 @@ const ThemeColorReplacer = require('webpack-theme-color-replacer');
 const forElementUI = require('webpack-theme-color-replacer/forElementUI');
 const cdnDependencies = require('./dependencies-cdn');
 const { chain, set, each } = require('lodash');
-a = 111
+a = 1112222
 // 拼接路径
 const resolve = dir => require('path').join(__dirname, dir);
 
