@@ -1,0 +1,92 @@
+name: prosafeai actions
+run-name: ${{ github.actor }} merge to dev
+# 还需要确认触发条件
+on: 
+  push:
+    branches:
+      - dev
+  pull_request:
+    types: [closed]
+    branches:
+      - dev
+    paths:
+      - "dashboard/backend/**"
+      - "dashboard/web/**"
+jobs:
+  base-infomations:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Basic infomations"
+        run: |
+          echo "The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+  copy-prosafeai:
+    needs: base-infomations
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check out repository code"
+        uses: actions/checkout@v4
+
+      - name: "Clean old code on server"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            rm -rf /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/*
+  
+      - name: "Copy repository code to server"
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: './'
+          target: /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/
+        
+  run-prosafeai:
+    needs: [base-infomations, copy-prosafeai]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Stop"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/dashboard
+            # docker-compose stop
+            # docker-compose down
+            pwd
+
+      - name: "Build"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/dashboard
+            # docker-compose build
+            ls
+
+      - name: "Deploy"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/dashboard
+            # docker-compose up -d
+            ls -l
