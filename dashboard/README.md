@@ -20,7 +20,7 @@ docker run -it -p 9913:22 -p 18080:8080 -p 18000:8000 --name prosafeai_web_backe
 /home/start_prosafeai_service.sh
 
 ### WEB
-http://10.38.49.30:18080/#/index1111122222222333333
+http://10.38.49.30:18080/#/index111112222222233333344444444
 
 ### Backend
 http://10.38.49.30:18000/
