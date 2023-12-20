@@ -6,6 +6,7 @@ const cdnDependencies = require('./dependencies-cdn');
 const { chain, set, each } = require('lodash');
 a = 111222233333
 2222222222222222
+11111111111111111111
 // 拼接路径
 const resolve = dir => require('path').join(__dirname, dir);
 
