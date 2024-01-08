@@ -1,1 +1,16 @@
-
+name: prosafeai actions
+run-name: ${{ github.actor }} push
+# 还需要确认触发条件
+on:
+  push:
+    branches:
+      - master
+jobs:
+  base-infomations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Basic infomations
+        run: |
+          echo "The job was automatically triggered by a ${{ github.event_name }} event."
+          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+          echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
