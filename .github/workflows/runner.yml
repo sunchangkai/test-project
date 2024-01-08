@@ -14,9 +14,11 @@ jobs:
           echo "The job was automatically triggered by a ${{ github.event_name }} event."
           echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
           echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
   
       - name: test ssh
-        # uses: appleboy/ssh-action@master
         uses: ./.github/actions/prosafeai-ssh
         with:
           host: ${{ secrets.HOST }}
