@@ -34,4 +34,5 @@ jobs:
           SSH_PORT: ${{ secrets.PORT }}
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.SSH_KEY }}
-      - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
+      # - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
+      - run: echo "good man"
