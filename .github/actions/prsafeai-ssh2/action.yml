@@ -1,0 +1,72 @@
+name: "SSH Action"
+description: "This action sets up the ssh config in the current environment"
+author: "mridul_aggarwal@yahoo.co.in"
+
+inputs:
+  NAME:
+    description: "A unique name for the server"
+    required: false
+    default: server
+  SSH_USER:
+    description: "The SSH username"
+    required: true
+  SSH_HOST:
+    description: "The hostname or the IP address"
+    required: true
+  SSH_PORT:
+    description: "The SSH port"
+    required: false
+    default: "22"
+  SSH_KEY:
+    description: "The full string SSH key"
+    required: true
+
+outputs:
+  SERVER:
+    description: "The name for the server in the config"
+    value: ${{ steps.setup.outputs.name }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: setup
+      name: Set server name
+      run: |
+        echo "---------------1"
+        NAME=$(echo "${{ inputs.NAME }}" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+|-+$//g' | tr A-Z a-z)
+        echo "name=$NAME" >> $GITHUB_OUTPUT
+        echo "---------------2"
+      shell: bash
+    - name: Create SSH key
+      run: |
+        echo "---------------3"
+        mkdir -p ~/.ssh/
+        echo "---------------4"
+        echo "${{ inputs.SSH_KEY }}" > ~/.ssh/${{ steps.setup.outputs.name }}.key
+        echo "---------------5"
+        sudo chmod 600 ~/.ssh/${{ steps.setup.outputs.name }}.key
+        echo "---------------6"
+      shell: bash
+    - name: Scan the public ssh host keys
+      run: |
+        echo "---------------7"
+        ssh-keyscan -H ${{ inputs.SSH_HOST }} >> ~/.ssh/known_hosts
+        echo "---------------8"
+      shell: bash
+    - name: Create SSH config
+      run: |
+        echo "---------------9"
+        cat >>~/.ssh/config <<END
+        echo "---------------10"
+        Host ${{ steps.setup.outputs.name }}
+          HostName ${{ inputs.SSH_HOST }}
+          Port ${{ inputs.SSH_PORT }}
+          User ${{ inputs.SSH_USER }}
+          IdentityFile ~/.ssh/${{ steps.setup.outputs.name }}.key
+        END
+        echo "---------------11"
+      shell: bash
+
+branding:
+  icon: "terminal"
+  color: "gray-dark"
