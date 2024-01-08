@@ -25,4 +25,3 @@ jobs:
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.KEY }}
       - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
-
