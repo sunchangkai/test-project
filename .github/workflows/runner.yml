@@ -16,7 +16,8 @@ jobs:
           echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
   
       - name: test ssh
-        uses: appleboy/ssh-action@master
+        # uses: appleboy/ssh-action@master
+        uses: ./.github/actions/prosafeai-ssh
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
