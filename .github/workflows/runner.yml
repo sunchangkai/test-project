@@ -18,12 +18,20 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
   
-      - name: test ssh
-        uses: ./.github/actions/prosafeai-ssh
+      # - name: test ssh
+      #   uses: ./.github/actions/prosafeai-ssh
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     port: ${{ secrets.PORT }}
+      #     script: |
+      #       pwd
+      - id: ssh
+        uses: invi5H/ssh-action@v1
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            pwd
+          SSH_HOST: ${{ secrets.HOST }}
+          SSH_PORT: ${{ secrets.PORT }}
+          SSH_USER: ${{ secrets.USERNAME }}
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+      - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
