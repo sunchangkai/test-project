@@ -18,11 +18,11 @@ jobs:
   test-ssh:
     runs-on: ubuntu-latest
     steps:
-      - id: ssh
-        uses: invi5H/ssh-action@v1
+      - name: ssh
         with:
           SSH_HOST: ${{ secrets.HOST }}
           SSH_PORT: ${{ secrets.PORT }}
           SSH_USER: ${{ secrets.USERNAME }}
           SSH_KEY: ${{ secrets.KEY }}
       - run: ssh ${{ steps.ssh.outputs.SERVER }} pwd
+
