@@ -24,6 +24,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
+          source: './'
+          target: /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/
         
       - name: Archive tool cache
         run: |
