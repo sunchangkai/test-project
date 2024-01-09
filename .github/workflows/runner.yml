@@ -21,8 +21,8 @@ jobs:
   
       - name: test ssh
         # uses: appleboy/ssh-action@master
-        # uses: ./.github/actions/prosafeai-ssh
-        uses: sunchangkai/ssh-action@master
+        uses: ./.github/actions/prosafeai-ssh
+        # uses: sunchangkai/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
