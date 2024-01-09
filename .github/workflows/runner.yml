@@ -2,36 +2,24 @@ name: Upload Node.js 14 and 16 tool cache
 on: push
 jobs:
   upload_tool_cache:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Clear any existing tool cache
         run: |
           mv "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
           mkdir -p "${{ runner.tool_cache }}"
-
-      - name: ssh cache
-        uses: appleboy/ssh-action@master
+      - name: Setup Node 14
+        uses: actions/setup-node@v3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-
-      - name: scp cache
-        uses: appleboy/scp-action@master
+          node-version: 14.x
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          source: './'
-          target: /home/${{ secrets.USERNAME }}/prosafeai-prosafeai-main/
-        
+          node-version: 16.x
       - name: Archive tool cache
         run: |
           cd "${{ runner.tool_cache }}"
           tar -czf tool_cache.tar.gz *
-
       - name: Upload tool cache artifact
         uses: actions/upload-artifact@v3
         with:
