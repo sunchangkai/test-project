@@ -1,1 +1,1 @@
-print("ver good man")
+print("very good man")
