@@ -1,34 +1,26 @@
-name: prosafeai actions
-run-name: ${{ github.actor }} push
-# 还需要确认触发条件
-on:
-  push:
-    branches:
-      - master
+name: Upload Node.js 14 and 16 tool cache
+on: push
 jobs:
-  base-infomations:
-    # runs-on: ubuntu-latest
-    runs-on: self-hosted
+  upload_tool_cache:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Basic infomations
+      - name: Clear any existing tool cache
         run: |
-          echo "The job was automatically triggered by a ${{ github.event_name }} event."
-          echo "This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-          echo "The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: pwd
-  
-      - name: test ssh
-        # uses: appleboy/ssh-action@master
-        uses: ./.github/actions/prosafeai-ssh
-        # uses: sunchangkai/ssh-action@master
+          mv "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
+          mkdir -p "${{ runner.tool_cache }}"
+      - name: Setup Node 14
+        uses: actions/setup-node@v3
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            pwd
-            ls
+          node-version: 14.x
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Archive tool cache
+        run: |
+          cd "${{ runner.tool_cache }}"
+          tar -czf tool_cache.tar.gz *
+      - name: Upload tool cache artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{runner.tool_cache}}/tool_cache.tar.gz
