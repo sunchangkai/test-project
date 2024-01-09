@@ -2,7 +2,7 @@ name: Upload Node.js 14 and 16 tool cache
 on: push
 jobs:
   upload_tool_cache:
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     steps:
       - name: Clear any existing tool cache
         run: |
